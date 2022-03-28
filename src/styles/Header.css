@@ -1,0 +1,14 @@
+.Header {
+  margin-top: 5%;
+}
+
+.Header__title {
+  font-size: 24PX;
+  margin-left: 5%;
+}
+
+@media (max-width: 375px) {
+  .Header {
+    padding: 2rem;
+  }
+}
