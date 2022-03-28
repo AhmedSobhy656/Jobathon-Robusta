@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import Header from "./components/Header";
 import WeatherAndForecast from "./components/WeatherAndForecast";
-import Loader from "./components/Loader";
 import Footer from "./components/Footer";
+import Loader from "./components/Loader";
+import Warning from "./components/Warning";
 
 import getAddressOfCoordinates from "./api/reverseGeocoding";
 import getCoordinatesOfAddress from "./api/forwardGeocoding";
@@ -18,10 +19,12 @@ function App() {
   const [locationInfo, setLocationInfo] = useState({});
   const [contentState, setContentState] = useState("blank");
 
-  
+  function searchCity(target) {
+    setAddress(target);
+  }
 
   function showWarning() {
-    // setContentState("warning");
+    setContentState("warning");
     setTimeout(() => setContentState("blank"), 3000);
   }
 
@@ -100,7 +103,7 @@ function App() {
   const Main = {
     blank: () => null,
     loading: () => <Loader />,
-    // warning: () => <Warning />,
+    warning: () => <Warning />,
     weatherAndForecast: () => (
       <WeatherAndForecast
         weatherInfo={weatherAndForecastInfo}
@@ -112,9 +115,8 @@ function App() {
   return (
     <div className="App">
       <div className="App__container">
-        <Header></Header>
         <>
-          {/* <Header searchCity={searchCity} /> */}
+          <Header searchCity={searchCity} />
           {Main[contentState]()}
         </>
         <Footer />

@@ -1,5 +1,5 @@
 import React from "react";
-// import Search from "./Search";
+import Search from "./Search";
 
 import "../styles/Header.css";
 
@@ -7,7 +7,7 @@ export default function Header({ searchCity }) {
     return ( 
       <header className = "Header">
          <h1 className = "Header__title" > INSTAWEATHER </h1> 
-         {/* <Search searchCity = { searchCity } />  */}
+         <Search searchCity = { searchCity } /> 
       </header >
     );
 }
